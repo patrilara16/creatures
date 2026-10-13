@@ -4,12 +4,17 @@ function Creature(props) {
         left: props.x + 'px',
         top: props.y + 'px',
         textAlign: 'center',
-        imageRendering: 'pixelated'
+        imageRendering: 'pixelated',
+        cursor: 'pointer'
     };
 
     return (
-        <div style={style}>
-            <img src={props.sleepImageUrl} alt={props.name} width="120" />
+        <div style={style} onClick={() => props.onWake(props.id)}>
+            <img
+                src={props.isAwake ? props.awakeImageUrl : props.sleepImageUrl}
+                alt={props.name}
+                width="120"
+            />
             <p>{props.name}, age {props.age}</p>
         </div>
     );
